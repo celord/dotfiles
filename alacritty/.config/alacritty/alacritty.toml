@@ -1,0 +1,152 @@
+# Alacritty configuration file (TOML format)
+
+[window]
+columns = 220
+lines = 50
+opacity = 1.0
+
+[window.position]
+x = 0
+y = 0
+
+[window.padding]
+x = 10
+y = 10
+
+scrollback_lines = 10000
+
+[font]
+# Default font: Ubuntu Mono (installed via package manager)
+# Alternative Nerd Fonts available:
+#   - "JetBrains Mono" (for icons with Nerd Font support)
+#   - "FiraCode" (FiraCode Nerd Font)
+#   - "Cascadia Code" (Cascadia Code Nerd Font)
+# Install fonts with: ~/dotfiles/bin/install-fonts.sh
+
+size = 12.0
+
+[font.normal]
+family = "Ubuntu Mono"
+style = "Regular"
+
+[font.bold]
+family = "Ubuntu Mono"
+style = "Bold"
+
+[font.italic]
+family = "Ubuntu Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "Ubuntu Mono"
+style = "Bold Italic"
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#d4d4d4"
+
+[colors.normal]
+black = "#000000"
+red = "#cd3131"
+green = "#0dbc79"
+yellow = "#e5e510"
+blue = "#2b7ec2"
+magenta = "#bc3fbc"
+cyan = "#11a8cd"
+white = "#e5e5e5"
+
+[colors.bright]
+black = "#666666"
+red = "#f14c4c"
+green = "#23d18b"
+yellow = "#f5f543"
+blue = "#3b8eea"
+magenta = "#d670d6"
+cyan = "#29b8db"
+white = "#ffffff"
+
+[colors.dim]
+black = "#666666"
+red = "#cd3131"
+green = "#0dbc79"
+yellow = "#e5e510"
+blue = "#2b7ec2"
+magenta = "#bc3fbc"
+cyan = "#11a8cd"
+white = "#a5a5a5"
+
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+visual = false
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"
+save_to_clipboard = true
+
+[mouse.double_click]
+threshold = 300
+
+[mouse.triple_click]
+threshold = 300
+
+[hints]
+enabled = []
+
+[cursor]
+style = "Block"
+vi_mode_style = "Beam"
+thickness = 0.15
+
+[shell]
+program = "/bin/zsh"
+args = ["--login"]
+
+[env]
+TERM = "xterm-256color"
+
+# Keybindings
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Control|Shift"
+action = "CreateNewWindow"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Control|Shift"
+action = "Quit"
+
+[[keyboard.bindings]]
+key = "Plus"
+mods = "Control|Shift"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control|Shift"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "0"
+mods = "Control|Shift"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Control|Shift"
+action = "ClearLogNotice"
+
+[[keyboard.bindings]]
+key = "Home"
+mods = "Alt"
+action = "ToggleFullscreen"

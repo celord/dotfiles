@@ -463,6 +463,10 @@ main() {
   echo "  4. Configure p10k theme: p10k configure"
   echo "  5. (Optional) Install fonts: ~/dotfiles/bin/install-fonts.sh"
   echo ""
+  print_info "Alacritty configuration:"
+  echo "  - Using TOML format: ~/.config/alacritty/alacritty.toml"
+  echo "  - Edit the config file to customize Alacritty settings"
+  echo ""
 }
 
 main "$@"
