@@ -78,7 +78,6 @@ white = "#a5a5a5"
 [bell]
 animation = "EaseOutExpo"
 duration = 0
-visual = false
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"
