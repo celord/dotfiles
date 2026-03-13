@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+.env.local
+.env.*.local
+.cache/
+.vscode-test/
+*.vsix
+coverage/
+.nyc_output/

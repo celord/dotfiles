@@ -1,0 +1,60 @@
+# Shortcuts
+# eza aliases (modern ls replacement)
+alias ls="eza"
+alias ll="eza -l --icons"
+alias la="eza -lA --icons"
+alias l="eza -la --icons"
+alias ltr="eza -ltr --icons"
+alias c="clear"
+alias h="history"
+
+# Git
+alias g="git"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gl="git pull"
+alias gst="git status"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gb="git branch"
+alias gco="git checkout"
+alias glo="git log --oneline"
+alias glog="git log --graph --oneline --all"
+
+# Development
+alias py="python3"
+alias pip="python3 -m pip"
+alias node="node"
+alias npm="npm"
+alias yarn="yarn"
+alias nvim="nvim"
+alias vim="nvim"
+alias vi="nvim"
+
+# Network
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0 2>/dev/null || ip addr | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}'"
+alias ips="ifconfig -a | grep -o 'inet6 \?\([0-9a-f:.]*\)' | cut -d' ' -f2"
+
+# File operations
+alias mkdir="mkdir -p"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+# Useful
+alias reload="exec ${SHELL} -l"
+alias path="echo $PATH | tr ':' '\n'"
+alias countfiles="find . -type f | wc -l"
+
+# Directory shortcuts
+alias gocode="cd ~/Dev"
+
+# Docker (if available)
+alias docker="docker"
+alias dc="docker-compose"
+
+# Package managers
+alias brew="brew"
+alias apt="sudo apt"

@@ -1,0 +1,113 @@
+[user]
+  # Name and email should be set in ~/.extra or via git config --global
+  name = Your Name
+  email = your.email@example.com
+
+[core]
+  # Use colors
+  ui = true
+  # Exclude files by name in git log/diff
+  excludesfile = ~/.gitignore_global
+  # Set your editor
+  editor = nvim
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = true
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = red bold
+  deleted = red bold
+  branch = magenta bold
+
+[push]
+  # Default push strategy
+  default = simple
+
+[pull]
+  # Rebase on pull if remote has new commits
+  rebase = false
+
+[merge]
+  # Tool for merge conflicts
+  tool = vimdiff
+  conflictstyle = diff3
+
+[diff]
+  # Use patience algorithm for better diff output
+  algorithm = histogram
+  renames = true
+  renameLimit = 10000
+
+[fetch]
+  # Automatically clean deleted remote refs
+  prune = true
+
+[rebase]
+  # Automatically stash before rebase
+  autostash = true
+
+[alias]
+  # Short aliases
+  st = status -sb
+  co = checkout
+  br = branch
+  ci = commit
+  a = add
+  ai = add -i
+  aa = add --all
+  d = diff
+  dc = diff --cached
+  dl = diff HEAD~1
+  ds = diff --stat
+  cp = cherry-pick
+  reset = reset --soft
+
+  # Logging
+  l = log --oneline --graph --all --decorate
+  ll = log --oneline
+  lg = log --graph --oneline --all
+  log-graph = log --graph --oneline --all --decorate
+  last = log -1 HEAD
+  lasts = log -1 --stat
+
+  # Cleaning
+  clean-local = !git branch --merged | grep -v '^*' | xargs -n 1 git branch -d
+  clean-remote = !git branch -r --merged origin/main | grep -v '^ *origin/\\(main\\|master\\)' | sed 's/^ *origin\\///' | xargs -n 1 git push --delete origin
+
+  # Shortcuts
+  amend = commit --amend --no-edit
+  unstage = restore --staged
+  discard = restore
+  undo = reset --soft HEAD~1
+  uncommit = reset --soft HEAD~1
+  pop = reset --soft HEAD~1
+
+  # Useful viewing
+  show-branches = branch -a
+  remotes = remote -v
+  tags = tag -l
+  stash-list = stash list
+  changes = diff --name-status
+  diffstat = diff --stat
+  who = shortlog -sn --all
+  when = log --reverse --oneline
+
+[init]
+  defaultbranch = main
+
+[status]
+  showUntrackedFiles = all
+  short = true

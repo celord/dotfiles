@@ -1,0 +1,54 @@
+# Set architecture flags
+export ARCHFLAGS="-arch $(uname -m)"
+
+# Prefer US English and use UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Make some commands not show their warnings about bash4 incompatibility or usage of $
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="${yellow}";
+
+# Don't clear the screen after quitting a manual page
+export MANPAGER="less -X";
+
+# History settings
+export HISTSIZE=32768
+export HISTFILESIZE="${HISTSIZE}"
+export SAVEHIST=10000
+
+# Python
+export PYTHONUNBUFFERED=1
+export PYTHONDONTWRITEBYTECODE=1
+
+# Node.js / npm
+export NODE_ENV="development"
+
+# Editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# FZF
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+# Paths - add custom paths here
+if [ -f ~/.path ]; then
+  source ~/.path
+fi
+
+# Homebrew (macOS)
+if [ -d "/opt/homebrew" ]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
+# Local bin
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# npm global
+export PATH="$HOME/.npm/_npx:$PATH"

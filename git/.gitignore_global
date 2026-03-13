@@ -1,0 +1,70 @@
+# Git Global Gitignore
+# Patterns to ignore in all repositories
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*~
+.vscode/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+*.pyo
+.hypothesis/
+
+# JavaScript/Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+.eslintcache
+dist/
+build/
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# Environment
+.env
+.env.local
+.env.*.local
+.dockerignore
+docker-compose.override.yml
+
+# OS
+Thumbs.db
+.DS_Store
+.directory
+
+# Misc
+.cache/
+.tmp/
+*.log
+logs/

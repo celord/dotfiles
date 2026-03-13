@@ -1,0 +1,103 @@
+# Custom functions
+
+# Create a new directory and enter it
+mkd() {
+  mkdir -p "$@" && cd "$_"
+}
+
+# Extract common archive formats
+extract() {
+  local remove_archive
+  local success
+  if (( $# == 0 )); then
+    cat << 'EOF'
+Usage: extract [-option] [file ...]
+Options:
+    -r, --remove    Remove archive after extraction
+EOF
+    return 1
+  fi
+  remove_archive=1
+  if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
+    remove_archive=0
+    shift
+  fi
+  while (( $# > 0 )); do
+    if [[ ! -f "$1" ]]; then
+      echo "extract: '$1' is not a valid file" 1>&2
+      shift
+      continue
+    fi
+    success=0
+    case "$1" in
+      *.tar.gz | *.tgz) tar xvfz "$1"; success=$?;;
+      *.tar.bz2 | *.tbz | *.tbz2) tar xvfj "$1"; success=$?;;
+      *.tar.xz | *.txz) tar --xz --extract --verbose --file "$1"; success=$?;;
+      *.zip) unzip "$1"; success=$?;;
+      *.rar) unrar x -ad "$1"; success=$?;;
+      *.7z) 7za x "$1"; success=$?;;
+      *) echo "extract: '$1' cannot be extracted" 1>&2; success=1;;
+    esac
+    (( success == 0 )) && (( remove_archive == 0 )) && rm -f "$1"
+    shift
+  done
+}
+
+# Search for a process
+pgrep() {
+  ps aux | grep "[${1:0:1}]${1:1}"
+}
+
+# Kill a process by name
+pkill() {
+  local psid=$(ps aux | grep "[${1:0:1}]${1:1}" | awk '{print $2}')
+  if [ -z "$psid" ]; then
+    echo "Process '$1' not found."
+  else
+    kill -9 "$psid"
+    echo "Killed process '$1' (PID: $psid)"
+  fi
+}
+
+# Git helpers
+git_branch() {
+  git rev-parse --abbrev-ref HEAD 2> /dev/null
+}
+
+git_status() {
+  git status --porcelain 2> /dev/null | wc -l
+}
+
+# Python virtual environment helper
+venv() {
+  if [ ! -d "venv" ]; then
+    python3 -m venv venv
+    echo "Created virtual environment"
+  fi
+  source venv/bin/activate
+}
+
+# Node version management helper
+use_node() {
+  if [ -z "$1" ]; then
+    echo "Usage: use_node <version>"
+    return 1
+  fi
+  nvm use "$1" 2>/dev/null || echo "Node version $1 not found"
+}
+
+# Check if command exists
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+# Open directories with default application
+open_url() {
+  if command_exists xdg-open; then
+    xdg-open "$@"
+  elif command_exists open; then
+    open "$@"
+  else
+    echo "No opener found"
+  fi
+}
