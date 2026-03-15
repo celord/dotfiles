@@ -272,16 +272,16 @@ setup_git() {
 
 # Install Oh My Zsh
 install_oh_my_zsh() {
-  if [ -d "$HOME_DIR/.oh-my-zsh" ]; then
+  # Install Oh My Zsh if not present
+  if [ ! -d "$HOME_DIR/.oh-my-zsh" ]; then
+    print_info "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    print_success "Oh My Zsh installed"
+  else
     print_success "Oh My Zsh is already installed"
-    return
   fi
 
-  print_info "Installing Oh My Zsh..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  print_success "Oh My Zsh installed"
-
-  # Install plugins
+  # Install plugins (always check, even if Oh My Zsh was already installed)
   print_info "Installing Oh My Zsh plugins..."
   
   plugins_dir="$HOME_DIR/.oh-my-zsh/custom/plugins"
@@ -435,10 +435,10 @@ main() {
   fi
 
   check_stow
+  install_oh_my_zsh
   symlink_dotfiles
   create_extra_file
   install_eza_zoxide
-  install_oh_my_zsh
   #setup_git
 
   # Ask about font installation
